@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"math"
 	"os"
 	"strconv"
 	"strings"
@@ -51,11 +52,10 @@ func main() {
 				stations[key][3] = value
 			}
 		}
-
 	}
 
-	for key, value := range stations { // round(float64(m.min)/10.0)
-		fmt.Printf("%s=%f/%f/%f\n", key, value[2], value[0]/value[1], value[3])
+	for key, value := range stations {
+		fmt.Printf("%s=%.1f/%.1f/%.1f\n", key, math.Round(value[2]*10)/10, (math.Round(value[0]*10)/10)/(math.Round(value[1]*10)/10), math.Round(value[3]*10)/10)
 	}
 
 }
